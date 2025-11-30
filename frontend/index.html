@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Task Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>Smart Task Analyzer</h1>
+    <p class="sub">Organize. Prioritize. Execute.</p>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT PANEL - NEVER SCROLLS -->
+    <section class="left-panel card">
+
+      <h2>Add Task</h2>
+
+      <form id="task-form" class="form-grid">
+
+        <input type="text" id="title" placeholder="Task title" required />
+        <input type="date" id="due_date" />
+        <input type="number" min="0" step="0.5" id="estimated_hours" placeholder="Estimated hours" />
+        <input type="number" min="1" max="10" id="importance" placeholder="Importance (1–10)" />
+
+        <input type="text" id="dependencies" placeholder="Dependencies (comma separated)" />
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Add</button>
+          <button type="button" class="btn light" id="clear-form">Clear</button>
+        </div>
+
+      </form>
+
+      <hr class="sep" />
+
+      <h3>Bulk JSON</h3>
+      <textarea id="json-input" placeholder='[{"title":"Task A"}]'></textarea>
+
+      <div class="form-actions">
+        <button class="btn outline" id="paste-json">Load JSON</button>
+        <button class="btn light" id="clear-json">Clear</button>
+      </div>
+
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="right-panel">
+
+      <!-- TOP CONTROLS -->
+      <div class="top-controls card">
+        <select id="strategy" class="dropdown">
+          <option value="smart">Smart Balance</option>
+          <option value="fastest">Fastest Wins</option>
+          <option value="impact">High Impact</option>
+          <option value="deadline">Deadline Driven</option>
+        </select>
+
+        <button id="analyze" class="btn accent">Analyze</button>
+      </div>
+
+      <!-- TASKS CONTAINER - SIDE BY SIDE -->
+      <div class="tasks-container">
+        
+        <!-- TASK LIST -->
+        <div class="card fixed-box">
+          <h2>Tasks Added</h2>
+          <div id="tasks-list" class="scroll-box empty">
+            No tasks added.
+          </div>
+        </div>
+
+        <!-- RESULT LIST -->
+        <div class="card fixed-box">
+          <h2>Analysis Result</h2>
+          <div id="analysis-result" class="scroll-box empty">
+            Results appear here.
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
